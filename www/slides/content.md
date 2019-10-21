@@ -135,12 +135,12 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '#dog' OR '1'='1';
 
 ## More about Zwitscher
 
-- [Zwitscher](../zwitscher/) hasa table for its users
-- We know its name as well as the names of its fields
+- [Zwitscher](../zwitscher/) has a table for its users
+- We know its name as well as the names of its columns
 <br />
 <br />
 - Table name: *user*
-- Field names: *username*, *mail*, *password*, *age*
+- Column names: *username*, *mail*, *password*, *age*
 <br />
 <br />
 
@@ -307,7 +307,7 @@ Bingo!
 
 ---
 
-## Getting table and field names
+## Getting table and column names
 
 - Metadata available in [information_schema](https://dev.mysql.com/doc/refman/8.0/en/information-schema.html)
 - Mostly in:

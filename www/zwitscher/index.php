@@ -95,7 +95,7 @@
     echo "<span class=\"col-sm-11\">";
     echo $user." ";
     echo "<div class=\"pull-right\"><span  class=\"label label-info\">" . $row['hashtag']."</span> </div> <hr />";
-    echo $row['nachricht']."</span></li>";
+    echo $row['msg']."</span></li>";
     //echo "</span>";
   }
 ?>

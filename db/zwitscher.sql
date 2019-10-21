@@ -37,17 +37,17 @@ DROP TABLE IF EXISTS `zwitscher`;
 --
 
 CREATE TABLE IF NOT EXISTS `secretstuff` (
-  `geheim` text NOT NULL,
-  `nochgeheimer` text NOT NULL
+  `secret` text NOT NULL,
+  `evenmoresecret` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `secretstuff`
 --
 
-INSERT INTO `secretstuff` (`geheim`, `nochgeheimer`) VALUES
-('23', 'gut'),
-('1337', 'alles richtig gemacht!');
+INSERT INTO `secretstuff` (`secret`, `evenmoresecret`) VALUES
+('23', 'you did well'),
+('1337', 'you found the secret!');
 
 -- --------------------------------------------------------
 
@@ -58,7 +58,7 @@ INSERT INTO `secretstuff` (`geheim`, `nochgeheimer`) VALUES
 CREATE TABLE IF NOT EXISTS `user` (
   `username` text NOT NULL,
   `mail` text NOT NULL,
-  `passwort` text NOT NULL,
+  `password` text NOT NULL,
   `age` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -66,8 +66,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`username`, `mail`, `passwort`, `age`) VALUES
-('mischa', 'mischa@mmisc.de', 'soeinfachistdasnicht', 21),
+INSERT INTO `user` (`username`, `mail`, `password`, `age`) VALUES
+('mischa', 'mischa@mmisc.de', 'notthateasy', 21),
 ('jus', 'jus@bitgrid.net', 'auchnichtwirklich', 23),
 ('AzureDiamond', 'ad@example.com', 'hunter2', 2),
 ('john', 'johndoe@example.com', 'qwertz', 42);
@@ -80,7 +80,7 @@ INSERT INTO `user` (`username`, `mail`, `passwort`, `age`) VALUES
 
 CREATE TABLE IF NOT EXISTS `zwitscher` (
   `user` text NOT NULL,
-  `nachricht` varchar(255) NOT NULL,
+  `msg` varchar(255) NOT NULL,
   `hashtag` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -88,11 +88,11 @@ CREATE TABLE IF NOT EXISTS `zwitscher` (
 -- Dumping data for table `zwitscher`
 --
 
-INSERT INTO `zwitscher` (`user`, `nachricht`, `hashtag`) VALUES
+INSERT INTO `zwitscher` (`user`, `msg`, `hashtag`) VALUES
 ('mischa', '5+5+10', '#trivia'),
 ('1337hax0r', 'all your base are belong to us', '#netsec'),
-('Optimist', 'Am Ende wird alles gut.', '#trivia'),
-('Lehrkraft', 'Nicht fuer die Schule, fuer das Leben lernen wir.', '#trivia'),
+('Optimist', 'the glass is half full.', '#trivia'),
+('Teacher', 'That is your LAST warning.', '#trivia'),
 ('Nyan Cat', 'Nyanyanyanyanyanyanya!', '#cat'),
 ('mischa', 'SQL injections are fun', '#netsec');
 
@@ -104,7 +104,7 @@ INSERT INTO `zwitscher` (`user`, `nachricht`, `hashtag`) VALUES
 -- Indexes for table `zwitscher`
 --
 ALTER TABLE `zwitscher`
- ADD PRIMARY KEY (`nachricht`);
+ ADD PRIMARY KEY (`msg`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
