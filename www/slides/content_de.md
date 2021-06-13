@@ -190,7 +190,7 @@ $sql = "SELECT *
 
 [Code ausführen](../zwitscher/?search=%27+UNION+SELECT+*+FROM+user%3B+--+)
 
-<div style="text-align: left"><i>"SQL-Fehler: Die benutzten SELECT-Aussagen haben eine unterschiedliche Anzahl von Zeilen."</i></div>
+<div style="text-align: left"><i>"SQL-Fehler: Die benutzten SELECT-Aussagen haben eine unterschiedliche Anzahl von Spalten."</i></div>
 
 <div style="text-align: left">UNION benötigt die selbe Anzahl von Feldern in beiden Ergebnis-Tabellen.</div>
 
@@ -198,7 +198,7 @@ $sql = "SELECT *
 
 ## Und jetzt?
 
-- Wie viele Zeilen gibt es in der ersten Abfrage?
+- Wie viele Spalten gibt es in der ersten Abfrage?
 - Keine Ahnung :(
 
 <br />
@@ -272,9 +272,9 @@ $sql = "SELECT *
 
 ## Dritter Versuch
 
-- Wie viele Zeilen sind in der Ergebnis-Tabelle der ersten Abfrage?
-- Drei Zeilen!
-- Wähle drei Zeilen: *username*, *mail*, *age*
+- Wie viele Spalten sind in der Ergebnis-Tabelle der ersten Abfrage?
+- Drei Spalten!
+- Wähle drei Spalten: *username*, *mail*, *age*
 <br />
 <br />
 
@@ -309,7 +309,7 @@ Bingo!
 
 ---
 
-## Wie man sich Tabellennamen und Feldnamen beschafft
+## Wie man sich Tabellennamen und Spaltennamen beschafft
 
 - Metadaten sind hier verfügbar: [information_schema](https://dev.mysql.com/doc/refman/8.0/en/information-schema.html)
 - Besonders hier:
