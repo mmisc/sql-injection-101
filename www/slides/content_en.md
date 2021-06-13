@@ -33,7 +33,7 @@ SELECT user FROM zwitscher WHERE message = 'Things always end well.';
 ## Dynamic queries with PHP
 
 ```php
-$sql = "SELECT * FROM zwitscher WHERE hashtag = '" .$search. "';";
+$sql = "SELECT * FROM zwitscher WHERE hashtag = '" . $search . "';";
 $q = mysql_query($sql);
 ```
 
@@ -58,7 +58,7 @@ $q = mysql_query($sql);
 ## Query 1
 
 ```php
-$sql = "SELECT * FROM zwitscher WHERE hashtag = '" .$search. "';";
+$sql = "SELECT * FROM zwitscher WHERE hashtag = '" . $search . "';";
 ```
 
 <br />
@@ -77,7 +77,7 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '#cat';
 ## Query 2
 
 ```php
-$sql = "SELECT * FROM zwitscher WHERE hashtag = '" .$search. "';";
+$sql = "SELECT * FROM zwitscher WHERE hashtag = '" . $search . "';";
 ```
 
 <br />
@@ -96,7 +96,7 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '#cat' OR hashtag='#trivia';
 ## Query 3
 
 ```php
-$sql = "SELECT * FROM zwitscher WHERE hashtag = '" .$search. "';";
+$sql = "SELECT * FROM zwitscher WHERE hashtag = '" . $search . "';";
 ```
 
 <br />
@@ -151,7 +151,7 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '#dog' OR '1'='1';
 ## First try
 
 ```php
-$sql = "SELECT * FROM zwitscher WHERE hashtag = '" .$search. "';";
+$sql = "SELECT * FROM zwitscher WHERE hashtag = '" . $search . "';";
 ```
 ---
 Input: <span style="color:crimson">#dog' UNION SELECT *  FROM user</span>
