@@ -12,6 +12,12 @@
 
 ---
 
+## Übungsumgebung
+
+- [Zwitscher](../zwitscher/)
+
+---
+
 ## Beispiel-Abfragen
 
 - [SELECT ... FROM ... ](http://www.w3schools.com/sql/sql_select.asp) - Selektiere Daten aus Tabelle
