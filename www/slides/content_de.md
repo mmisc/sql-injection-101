@@ -14,7 +14,7 @@
 
 ## Beispiel-Abfragen
 
-- [SELECT ... FROM ... ](http://www.w3schools.com/sql/sql_select.asp) - Wähle Daten aus Datenbank
+- [SELECT ... FROM ... ](http://www.w3schools.com/sql/sql_select.asp) - Selektiere Daten aus Tabelle
 - [WHERE](http://www.w3schools.com/sql/sql_where.asp) - Optional: Formulierung von Bedingungen
 
 ```sql
@@ -48,8 +48,8 @@ $q = mysql_query($sql);
 ---
 
 ## Dynamische Abfragen mit PHP
-- Eingabe wird weder überprüft noch abgefangen ("escaped")!
-- Was passiert, wenn der Benutzer eine bösartige Eingabe macht?
+- Eingabe wird weder überprüft noch maskiert ("escaped")!
+- Was könnte passieren, wenn der Benutzer eine "bösartige" Eingabe macht?
 <br />
 <br />
 <span style="color:red">Schlechter Code! Nicht nachmachen!</span>
@@ -115,8 +115,8 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '#dog' OR '1'='1';
 
 ## Was haben wir bisher gelernt?
 
-- Offensichtlich: Benutzer können das Suchwort ändern
-- Ungewollt: Angreifer können die Abfrage manipulieren
+- Offensichtlich und gewollt: Benutzer können den Suchbegriff ändern
+- Ungewollt: Angreifer können die gesamte Abfrage manipulieren
 
 <br />
 <br />
@@ -128,15 +128,15 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '#dog' OR '1'='1';
 
 # Ja, es ist gefährlich!
 
-- Angreifer kann sich ohne Passwort einloggen
+- Angreifer kann sich ggf. ohne Passwort einloggen
 - Angreifer ist nicht auf aktuelle Tabelle beschränkt
-- SQL erlaubt das "Aneinanderreihen" zweier Abfrage-Ergebnis-Tabellen mit [UNION](http://www.w3schools.com/sql/sql_union.asp)
+- SQL erlaubt das "Aneinanderreihen" zweier Ergebnistabellen mit [UNION](http://www.w3schools.com/sql/sql_union.asp)
 
 ---
 
 ## Mehr über Zwitscher
 
-- [Zwitscher](../zwitscher/) beinhaltet eine Benutzertabelle
+- [Zwitscher](../zwitscher/) besitzt eine Benutzertabelle
 - Wir kennen den Namen der Tabelle und die Namen ihrer Spalten
 <br />
 <br />
@@ -166,13 +166,16 @@ $sql = "SELECT *
 [Code ausführen](../zwitscher/?search=%23hashtag%27+UNION+SELECT+*+FROM+user)
 
 <div style="text-align: left"><i>"SQL-Fehler: Es wurde ein Fehler in Ihrer SQL-Syntax gefunden. Suchen Sie in der zu Ihrer MySQL-Server-Version gehörigen Anleitung nach der richtigen Syntax bei der Benutzung von ''' in Zeile 1."</i></div>
-<div style="text-align: left"><i>"Syntax-Fehler: Es gibt ein störendes Ausrufezeichen."</i></div>
+<div style="text-align: left"><i>"Syntax-Fehler: Es gibt ein störendes Anführungszeichen."</i></div>
 
 ---
 
 ## Zweiter Versuch
 
-Aufgabe: Werde störende Zeichen los, indem du sie auskommentierst
+- Was tun mit ungewolltem Code?
+<br />
+- Auskommentieren!
+- Ansatz: Werde störende Zeichen los, indem du sie auskommentierst
 
 --
 
@@ -180,7 +183,7 @@ Aufgabe: Werde störende Zeichen los, indem du sie auskommentierst
 
 Eingabe: <span style="color:crimson">#dog' UNION SELECT *  FROM user; -- </span>
 
-( **Wichtig:** Leerzeichen nach Begrenzungssymbol )
+( **Wichtig:** Leerzeichen nach Trennzeichen )
 
 ```php
 $sql = "SELECT *
@@ -198,7 +201,7 @@ $sql = "SELECT *
 
 ## Und jetzt?
 
-- Wie viele Spalten gibt es in der ersten Abfrage?
+- Wie viele Spalten hat das Ergebnis der ersten Abfrage?
 - Keine Ahnung :(
 
 <br />
@@ -218,7 +221,7 @@ $sql = "SELECT *
 <br />
 <br />
 
-**Ansatz: Ausprobieren... Inkrementiere, bis es passt**
+**Ansatz: Ausprobieren... Inkrementieren, bis es keinen Fehler mehr gibt**
 
 --
 
@@ -294,12 +297,12 @@ Bingo!
 
 ## Zusammenfassung
 
-- Verschiedene Tabellen können gelesen werden
+- Nicht nur die vorgesehene, sondern auch andere Tabellen können gelesen werden
 
 - Es gibt Probleme:
 
-    - Tabellennamen sind unbekannt
-    - Feldnamen sind unbekannt
+    - Tabellennamen sind nicht immer bekannt
+    - Feldnamen sind nicht immer bekannt
 
 <br />
 <br />
@@ -311,7 +314,7 @@ Bingo!
 
 ## Wie man sich Tabellennamen und Spaltennamen beschafft
 
-- Metadaten sind hier verfügbar: [information_schema](https://dev.mysql.com/doc/refman/8.0/en/information-schema.html)
+- Metadaten sind hier dokumentiert: [information_schema](https://dev.mysql.com/doc/refman/8.0/en/information-schema.html)
 - Besonders hier:
     - [information_schema.tables](https://dev.mysql.com/doc/refman/8.0/en/tables-table.html)
     - [information_schema.columns](https://dev.mysql.com/doc/refman/8.0/en/columns-table.html)
@@ -319,16 +322,16 @@ Bingo!
 <br />
 <br />
 
-### Wie erhalten wir sie? Genau wie vorher!
+### Wie erhalten wir jetzt die Namen? Genau wie vorher!
 
 ---
 
-## Wie können wir dieses Problem umgehen?
+## Wie mache ich meinen Code sicher?
 
-- Traue niemals Nutzereingaben
-- Benutze keine Abfragen, die Strings aneinanderreihen
+- Traue keinen Nutzereingaben
+- Benutze keine Abfragen, die aus festen Zeichenketten und Nutzereingaben zusammengesetzt werden
 - Benutze sichere Methoden für die Datenbank-Interaktion
-- In PHP: "Prepared statements"
+- In PHP z.b.: prepared statements
 
 ---
 
@@ -338,7 +341,7 @@ Es gibt eine dritte Tabelle in [Zwitscher](../zwitscher/)...
 <br />
 <br />
 
-**Kannst du sie knacken?**
+**Kannst ihr sie auslesen?**
 
 ---
 
