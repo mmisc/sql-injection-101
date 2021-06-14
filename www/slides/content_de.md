@@ -618,7 +618,7 @@ Es gibt eine dritte Tabelle in [Zwitscher](../zwitscher/)...
 <br />
 <br />
 
-**Kannst ihr sie auslesen?**
+**Könnt ihr sie auslesen?**
 
 ---
 
