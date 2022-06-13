@@ -313,8 +313,8 @@ Bingo!
 
 - Metadaten sind hier verfügbar: [information_schema](https://dev.mysql.com/doc/refman/8.0/en/information-schema.html)
 - Besonders hier:
-    - [information_schema.tables](https://dev.mysql.com/doc/refman/8.0/en/tables-table.html)
-    - [information_schema.columns](https://dev.mysql.com/doc/refman/8.0/en/columns-table.html)
+    - [information_schema.tables](https://dev.mysql.com/doc/refman/8.0/en/information-schema-tables-table.html)
+    - [information_schema.columns](https://dev.mysql.com/doc/refman/8.0/en/information-schema-columns-table.html)
 <br />
 <br />
 <br />
