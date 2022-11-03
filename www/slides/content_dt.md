@@ -348,3 +348,4 @@ Es gibt eine dritte Tabelle in [Zwitscher](../zwitscher/)...
 - [Filter Evasion Cheat Sheet](https://websec.wordpress.com/2010/12/04/sqli-filter-evasion-cheat-sheet-mysql)
 - [Wikipedia (English)](http://en.wikipedia.org/wiki/SQL_injection)
 - [Source Code of Zwitscher](../zwitscher/?src)
+- [Github der Slides und Zwitscher, pull requests willkommen!](https://github.com/mmisc/sql-injection-101)
