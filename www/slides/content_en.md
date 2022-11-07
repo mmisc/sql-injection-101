@@ -16,17 +16,74 @@
 - [SELECT ... FROM ...](http://www.w3schools.com/sql/sql_select.asp) - Select data from database
 - [WHERE](http://www.w3schools.com/sql/sql_where.asp) - Optional: Allows to formulate conditions
 
+---
+
+| user     | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Happy hacking!          |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
+
+```sql
+SELECT * FROM zwitscher;
+```
+
+| user     | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Happy hacking!          |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
+
+---
+
+| user     | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Happy hacking!          |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
+
 ```sql
 SELECT * FROM zwitscher WHERE hashtag = '#trivia';
 ```
+
+| user     | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Happy hacking!          |
+
+---
+
+| user     | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Happy hacking!          |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
 
 ```sql
 SELECT * FROM zwitscher WHERE hashtag = '#trivia' OR hashtag = '#cat';
 ```
 
+| user     | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Happy hacking!          |
+| Flauschi | #cat    | Miau                    |
+
+
+
+---
+
+| user     | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Happy hacking!          |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
+
 ```sql
 SELECT user FROM zwitscher WHERE message = 'Things always end well.';
 ```
+
+| user     |
+|----------|
+| mischa   |
 
 ---
 
