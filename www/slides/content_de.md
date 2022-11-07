@@ -25,277 +25,72 @@
 
 ---
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-</style>
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-0lax"><span style="font-weight:bold">user</span></th>
-    <th class="tg-0lax"><span style="font-weight:bold">hashtag</span></th>
-    <th class="tg-0lax"><span style="font-weight:bold">message</span></th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0lax">mischa</td>
-    <td class="tg-0lax">#trivia</td>
-    <td class="tg-0lax">Viel Spaß beim Hacken</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">Flauschi</td>
-    <td class="tg-0lax">#cat</td>
-    <td class="tg-0lax">Miau</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">mischa</td>
-    <td class="tg-0lax">#wisdom</td>
-    <td class="tg-0lax">Things always end well.</td>
-  </tr>
-</tbody>
-</table>
+| user     | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
 
 ```sql
 SELECT * FROM zwitscher;
 ```
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-</style>
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-0lax"><span style="font-weight:bold">user</span></th>
-    <th class="tg-0lax"><span style="font-weight:bold">hashtag</span></th>
-    <th class="tg-0lax"><span style="font-weight:bold">message</span></th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0lax">mischa</td>
-    <td class="tg-0lax">#trivia</td>
-    <td class="tg-0lax">Viel Spaß beim Hacken</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">Flauschi</td>
-    <td class="tg-0lax">#cat</td>
-    <td class="tg-0lax">Miau</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">mischa</td>
-    <td class="tg-0lax">#wisdom</td>
-    <td class="tg-0lax">Things always end well.</td>
-  </tr>
-</tbody>
-</table>
+| user     | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
 
 ---
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-</style>
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-0lax"><span style="font-weight:bold">user</span></th>
-    <th class="tg-0lax"><span style="font-weight:bold">hashtag</span></th>
-    <th class="tg-0lax"><span style="font-weight:bold">message</span></th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0lax">mischa</td>
-    <td class="tg-0lax">#trivia</td>
-    <td class="tg-0lax">Viel Spaß beim Hacken</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">Flauschi</td>
-    <td class="tg-0lax">#cat</td>
-    <td class="tg-0lax">Miau</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">mischa</td>
-    <td class="tg-0lax">#wisdom</td>
-    <td class="tg-0lax">Things always end well.</td>
-  </tr>
-</tbody>
-</table>
+| user     | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
 
 ```sql
 SELECT * FROM zwitscher WHERE hashtag = '#trivia';
 ```
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-</style>
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-0lax"><span style="font-weight:bold">user</span></th>
-    <th class="tg-0lax"><span style="font-weight:bold">hashtag</span></th>
-    <th class="tg-0lax"><span style="font-weight:bold">message</span></th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0lax">mischa</td>
-    <td class="tg-0lax">#trivia</td>
-    <td class="tg-0lax">Viel Spaß beim Hacken</td>
-  </tr>
-</tbody>
-</table>
 
+| user     | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
 
 ---
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-</style>
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-0lax"><span style="font-weight:bold">user</span></th>
-    <th class="tg-0lax"><span style="font-weight:bold">hashtag</span></th>
-    <th class="tg-0lax"><span style="font-weight:bold">message</span></th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0lax">mischa</td>
-    <td class="tg-0lax">#trivia</td>
-    <td class="tg-0lax">Viel Spaß beim Hacken</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">Flauschi</td>
-    <td class="tg-0lax">#cat</td>
-    <td class="tg-0lax">Miau</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">mischa</td>
-    <td class="tg-0lax">#wisdom</td>
-    <td class="tg-0lax">Things always end well.</td>
-  </tr>
-</tbody>
-</table>
+| user     | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
 
 ```sql
 SELECT * FROM zwitscher WHERE hashtag = '#trivia' OR hashtag = '#cat';
 ```
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-</style>
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-0lax"><span style="font-weight:bold">user</span></th>
-    <th class="tg-0lax"><span style="font-weight:bold">hashtag</span></th>
-    <th class="tg-0lax"><span style="font-weight:bold">message</span></th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0lax">mischa</td>
-    <td class="tg-0lax">#trivia</td>
-    <td class="tg-0lax">Viel Spaß beim Hacken</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">Flauschi</td>
-    <td class="tg-0lax">#cat</td>
-    <td class="tg-0lax">Miau</td>
-  </tr>
-</tbody>
-</table>
+| user     | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
+| Flauschi | #cat    | Miau                    |
+
+
 
 ---
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-</style>
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-0lax"><span style="font-weight:bold">user</span></th>
-    <th class="tg-0lax"><span style="font-weight:bold">hashtag</span></th>
-    <th class="tg-0lax"><span style="font-weight:bold">message</span></th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0lax">mischa</td>
-    <td class="tg-0lax">#trivia</td>
-    <td class="tg-0lax">Viel Spaß beim Hacken</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">Flauschi</td>
-    <td class="tg-0lax">#cat</td>
-    <td class="tg-0lax">Miau</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">mischa</td>
-    <td class="tg-0lax">#wisdom</td>
-    <td class="tg-0lax">Things always end well.</td>
-  </tr>
-</tbody>
-</table>
+| user     | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
 
 ```sql
 SELECT user FROM zwitscher WHERE message = 'Things always end well.';
 ```
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-</style>
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-0lax"><span style="font-weight:bold">user</span></th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0lax">mischa</td>
-  </tr>
-</tbody>
-</table>
+
+| user     |
+|----------|
+| mischa   | 
 
 ---
 
