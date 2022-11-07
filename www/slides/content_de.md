@@ -593,8 +593,8 @@ Bingo!
 
 - Metadaten sind hier dokumentiert: [information_schema](https://dev.mysql.com/doc/refman/8.0/en/information-schema.html)
 - Besonders hier:
-    - [information_schema.tables](https://dev.mysql.com/doc/refman/8.0/en/tables-table.html)
-    - [information_schema.columns](https://dev.mysql.com/doc/refman/8.0/en/columns-table.html)
+    - [information_schema.tables](https://dev.mysql.com/doc/refman/8.0/en/information-schema-tables-table.html)
+    - [information_schema.columns](https://dev.mysql.com/doc/refman/8.0/en/information-schema-columns-table.html)
 <br />
 <br />
 <br />
@@ -628,3 +628,4 @@ Es gibt eine dritte Tabelle in [Zwitscher](../zwitscher/)...
 - [Filter Evasion Cheat Sheet](https://websec.wordpress.com/2010/12/04/sqli-filter-evasion-cheat-sheet-mysql)
 - [Wikipedia (English)](http://en.wikipedia.org/wiki/SQL_injection)
 - [Source Code of Zwitscher](../zwitscher/?src)
+- [Github der Slides und Zwitscher, pull requests willkommen!](https://github.com/mmisc/sql-injection-101)
