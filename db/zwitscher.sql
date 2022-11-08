@@ -67,8 +67,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`username`, `mail`, `password`, `age`) VALUES
-('mischa', 'mischa@mmisc.de', 'notthateasy', 21),
-('jus', 'jus@bitgrid.net', 'auchnichtwirklich', 23),
+('mischa', 'mischa@zwitscher', 'notthateasy', 21),
+('jus', 'jus@zwitscher', 'auchnichtwirklich', 23),
 ('AzureDiamond', 'ad@example.com', 'hunter2', 2),
 ('john', 'johndoe@example.com', 'qwertz', 42);
 
