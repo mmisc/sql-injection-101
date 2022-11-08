@@ -9,5 +9,4 @@ COPY ./db/zwitscher.sql /docker-entrypoint-initdb.d/zwitscher.sql
 WORKDIR /srv/app
 
 RUN docker-php-ext-install mysqli\
-    && chown -R www-data:www-data /srv/app\
-    && a2enmod rewrite
+    && chown -R www-data:www-data /srv/app
