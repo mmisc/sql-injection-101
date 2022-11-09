@@ -83,15 +83,14 @@
 
 <?php
   while($row = mysqli_fetch_array($q)) {
-    $user = $row['user'];
     echo "<li  class=\"row list-group-item\">";
-    echo "<span class=\"col-sm-1\">";
-    echo '<svg width="80" height="80" data-jdenticon-value="' . $user . '"></svg>';
-    echo "</span>";
-    echo "<span class=\"col-sm-11\">";
-    echo $user." ";
-    echo "<div class=\"pull-right\"><span  class=\"label label-info\">" . $row['hashtag']."</span> </div> <hr />";
-    echo $row['msg']."</span></li>";
+    echo "<div class=\"col-sm-1\">";
+    echo '<svg width="80" height="80" data-jdenticon-value="' . $row['user'] . '"></svg>';
+    echo "</div>";
+    echo "<div class=\"col-sm-11\">";
+    echo $row['user'];;
+    echo "<div class=\"pull-right\"><div  class=\"label label-info\">" . $row['hashtag']."</div> </div> <hr/>";
+    echo $row['msg']."</div></li>";
   }
 ?>
 </ul>
