@@ -86,7 +86,7 @@
     $user = $row['user'];
     echo "<li  class=\"row list-group-item\">";
     echo "<span class=\"col-sm-1\">";
-    echo "<img src=\"https://www.gravatar.com/avatar/".md5($user."2f12530acc8771af77f5d3cfe344594e")."?f=y&d=identicon\" alt=\"".$user."\">";
+    echo '<svg width="80" height="80" data-jdenticon-value="' . $user . '"></svg>';
     echo "</span>";
     echo "<span class=\"col-sm-11\">";
     echo $user." ";
@@ -99,6 +99,6 @@
 </div>
 </div>
 </div>
-<script src="assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="assets/jdenticon.min.js"></script>
 </body>
 </html>
