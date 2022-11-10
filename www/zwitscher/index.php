@@ -44,61 +44,51 @@
             <li><a href="#contact">Contact</a></li>
           </ul>
           <div class="col-sm-3 col-md-3 pull-right">
-        <form class="navbar-form" role="search">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder=<?php echo "\"" . $search . "\""; ?>  name="search" id="search">
-            <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
+            <form class="navbar-form" role="search">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder=<?php echo "\"" . $search . "\""; ?>  name="search" id="search">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
-        </form>
-        </div>
-        </div><!--/.nav-collapse -->
       </div>
     </nav>
-  <div class="alert alert-warning">
-  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Debug:</strong> "<?php echo $sql; ?>
-  </div>
-<?php
-  if($q === FALSE) {
-    echo "<div class=\"alert alert-danger\">";
-    echo "<a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>";
-    echo "<strong>SQL Error:</strong> " . mysqli_error($con);
-    echo "</div>";
-    echo "<div class=\"alert alert-danger\">";
-    echo "<a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>";
-    echo "<strong>Error:</strong> Check the <a href=\"?src\">source</a> for better understanding";
-    echo "</div";
-  }
-  $num = mysqli_num_rows($q); ?>
+    <div class="alert alert-warning">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Debug:</strong> "<?php echo $sql; ?>
+    </div>
+    <?php
+      if($q === FALSE) {
+        echo '<div class="alert alert-danger">';
+        echo '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+        echo '<strong>SQL Error:</strong> ' . mysqli_error($con) . '</div>';
+        echo '<div class="alert alert-danger">';
+        echo '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+        echo '<strong>Error:</strong> Check the <a href="?src">source</a> for debugging!</div>';
+      }
+    ?>
     <div class="container"> 
       <div class="starter-template">
         <div class="row">
           <div class="col-sm-12">
-
-
-
-<ul class="list-group">
-
-<?php
-  while($row = mysqli_fetch_array($q)) {
-    $user = $row['user'];
-    echo "<li  class=\"row list-group-item\">";
-    echo "<span class=\"col-sm-1\">";
-    echo '<svg width="80" height="80" data-jdenticon-value="' . $user . '"></svg>';
-    echo "</span>";
-    echo "<span class=\"col-sm-11\">";
-    echo $user." ";
-    echo "<div class=\"pull-right\"><span  class=\"label label-info\">" . $row['hashtag']."</span> </div> <hr />";
-    echo $row['msg']."</span></li>";
-  }
-?>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<script src="assets/jdenticon.min.js"></script>
-</body>
+            <ul class="list-group">
+              <?php
+                while($row = mysqli_fetch_array($q)) {
+                  echo '<li class="row list-group-item">';
+                  echo '<div class="col-sm-1"><svg width="80" height="80" data-jdenticon-value="' . $row['user'] . '"></svg></div>';
+                  echo '<div class="col-sm-11">' . $row['user'];
+                  echo '<div class="pull-right"><div  class="label label-info">' . $row['hashtag'].'</div></div><hr/>';
+                  echo $row['msg']."</div></li>";
+                }
+              ?>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/jdenticon.min.js"></script>
+  </body>
 </html>
