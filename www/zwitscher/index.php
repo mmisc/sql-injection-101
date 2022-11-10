@@ -16,7 +16,7 @@
   $q = mysqli_query($con, $sql);
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -80,7 +80,7 @@
                   echo '<li class="row list-group-item">';
                   echo '<div class="col-sm-1"><svg width="80" height="80" data-jdenticon-value="' . $row['user'] . '"></svg></div>';
                   echo '<div class="col-sm-11">' . $row['user'];
-                  echo '<div class="pull-right"><div  class="label label-info">' . $row['hashtag'].'</div></div><hr/>';
+                  echo '<div class="pull-right"><div  class="label label-info">' . $row['hashtag'].'</div></div><hr>';
                   echo $row['msg']."</div></li>";
                 }
               ?>
