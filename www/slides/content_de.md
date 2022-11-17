@@ -410,15 +410,22 @@ Bingo!
 ## Und jetzt ihr!
 
 Es gibt eine dritte Tabelle in [Zwitscher](../zwitscher/)...
-<br />
-<br />
 
 **Könnt ihr sie auslesen?**
 
 ---
 
+## Aufgaben
+
+- [Natas](https://overthewire.org/wargames/natas/) Nicht nur SQLi, auch Websicherheit allgemein
+- [PicoCTF](https://play.picoctf.org/) Anfängerfreundliches ÜbungsCTF
+
+---
+
 ## Links
+- Youtube: [Computerphile](https://www.youtube.com/watch?v=ciNHn38EyRc), [LiveOverflow](https://www.youtube.com/watch?v=WWJTsKaJT_g)
 - [Pentestmonkey Cheat Sheet](http://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet)
+- [SQL Injection Knowledge Base](https://www.websec.ca/kb/sql_injection)
 - [Exploiting Filtered SQLi](https://websec.wordpress.com/2010/03/19/exploiting-hard-filtered-sql-injections)
 - [Filter Evasion Cheat Sheet](https://websec.wordpress.com/2010/12/04/sqli-filter-evasion-cheat-sheet-mysql)
 - [Wikipedia (English)](http://en.wikipedia.org/wiki/SQL_injection)
