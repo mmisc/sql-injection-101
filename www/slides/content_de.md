@@ -418,7 +418,7 @@ Es gibt eine dritte Tabelle in [Zwitscher](../zwitscher/)...
 ## Aufgaben
 
 - [Natas](https://overthewire.org/wargames/natas/) Nicht nur SQLi, auch Websicherheit allgemein
-- [PicoCTF](https://play.picoctf.org/) Anfängerfreundliches ÜbungsCTF
+- [PicoCTF](https://play.picoctf.org/) Anfängerfreundliches ÜbungsCTF.  SQLiLite, logon, irish name repo 1/2 sind SQLi.
 
 ---
 
