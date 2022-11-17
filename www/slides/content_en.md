@@ -390,15 +390,22 @@ Bingo!
 ## Let's do it!
 
 There is a third table on [Zwitscher](../zwitscher/)...
-<br />
-<br />
 
 **Can you dump it?**
 
 ---
 
+## Challenges
+
+- [Natas](https://overthewire.org/wargames/natas/) Not only SQLi, but also Webssecurity in general
+- [PicoCTF](https://play.picoctf.org/) Beginner-friendly  Training CTF
+
+---
+
 ## Links
+- Youtube: [Computerphile](https://www.youtube.com/watch?v=ciNHn38EyRc), [LiveOverflow](https://www.youtube.com/watch?v=WWJTsKaJT_g)
 - [Pentestmonkey Cheat Sheet](http://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet)
+- [SQL Injection Knowledge Base](https://www.websec.ca/kb/sql_injection)
 - [Exploiting Filtered SQLi](https://websec.wordpress.com/2010/03/19/exploiting-hard-filtered-sql-injections)
 - [Filter Evasion Cheat Sheet](https://websec.wordpress.com/2010/12/04/sqli-filter-evasion-cheat-sheet-mysql)
 - [Wikipedia (English)](http://en.wikipedia.org/wiki/SQL_injection)
