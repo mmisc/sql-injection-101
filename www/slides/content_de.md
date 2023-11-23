@@ -78,9 +78,13 @@ http://www.meinecoolectfwebsite.de/notizen/../geheimnis
 
 ---
 
-## Übungsumgebung
+zwitscher:
 
-- [Zwitscher](../zwitscher/)
+| username | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
 
 ---
 
@@ -88,10 +92,29 @@ http://www.meinecoolectfwebsite.de/notizen/../geheimnis
 
 - [SELECT ... FROM ... ](http://www.w3schools.com/sql/sql_select.asp) - Selektiere Daten aus Tabelle
 - [WHERE](http://www.w3schools.com/sql/sql_where.asp) - Optional: Formulierung von Bedingungen
+  - [AND](https://www.w3schools.com/sql/sql_and_or.asp)/[OR](https://www.w3schools.com/sql/sql_or.asp) - Bedingungen logisch verknüpfen
 
----
+--
 
-| user     | hashtag | message                 |
+| username | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
+
+```sql
+SELECT username, hashtag, message FROM zwitscher;
+```
+
+| username | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
+
+--
+
+| username | hashtag | message                 |
 |----------|---------|-------------------------|
 | mischa   | #trivia | Viel Spaß beim Hacken   |
 | Flauschi | #cat    | Miau                    |
@@ -101,15 +124,15 @@ http://www.meinecoolectfwebsite.de/notizen/../geheimnis
 SELECT * FROM zwitscher;
 ```
 
-| user     | hashtag | message                 |
+| username | hashtag | message                 |
 |----------|---------|-------------------------|
 | mischa   | #trivia | Viel Spaß beim Hacken   |
 | Flauschi | #cat    | Miau                    |
 | mischa   | #wisdom | Things always end well. |
 
----
+--
 
-| user     | hashtag | message                 |
+| username | hashtag | message                 |
 |----------|---------|-------------------------|
 | mischa   | #trivia | Viel Spaß beim Hacken   |
 | Flauschi | #cat    | Miau                    |
@@ -119,13 +142,13 @@ SELECT * FROM zwitscher;
 SELECT * FROM zwitscher WHERE hashtag = '#trivia';
 ```
 
-| user     | hashtag | message                 |
+| username | hashtag | message                 |
 |----------|---------|-------------------------|
 | mischa   | #trivia | Viel Spaß beim Hacken   |
 
----
+--
 
-| user     | hashtag | message                 |
+| username | hashtag | message                 |
 |----------|---------|-------------------------|
 | mischa   | #trivia | Viel Spaß beim Hacken   |
 | Flauschi | #cat    | Miau                    |
@@ -135,28 +158,63 @@ SELECT * FROM zwitscher WHERE hashtag = '#trivia';
 SELECT * FROM zwitscher WHERE hashtag = '#trivia' OR hashtag = '#cat';
 ```
 
-| user     | hashtag | message                 |
+| username | hashtag | message                 |
 |----------|---------|-------------------------|
 | mischa   | #trivia | Viel Spaß beim Hacken   |
 | Flauschi | #cat    | Miau                    |
 
+--
 
-
----
-
-| user     | hashtag | message                 |
+| username | hashtag | message                 |
 |----------|---------|-------------------------|
 | mischa   | #trivia | Viel Spaß beim Hacken   |
 | Flauschi | #cat    | Miau                    |
 | mischa   | #wisdom | Things always end well. |
 
 ```sql
-SELECT user FROM zwitscher WHERE message = 'Things always end well.';
+SELECT * FROM zwitscher WHERE username = 'mischa' AND hashtag = '#cat';
 ```
 
-| user     |
+| username | hashtag | message                 |
+|----------|---------|-------------------------|
+
+--
+
+| username | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
+
+```sql
+SELECT username FROM zwitscher WHERE message = 'Things always end well.';
+```
+
+| username |
 |----------|
 | mischa   | 
+
+--
+
+| username | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
+
+```sql
+SELECT 1,2,3;
+```
+
+| output1 | output2 | output3 |
+|---------|---------|---------|
+| 1       | 2       | 3       |
+
+---
+
+## Übungsumgebung
+
+- [Zwitscher](../zwitscher/)
 
 ---
 
@@ -269,6 +327,24 @@ SELECT column_name(s) FROM table1
 UNION
 SELECT column_name(s) FROM table2;
 ```
+
+--
+
+| username | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
+
+```sql
+(SELECT username FROM zwitscher WHERE hashtag = '#trivia') UNION
+(SELECT message FROM zwitscher WHERE hashtag = '#cat');
+```
+
+| username |
+|----------|
+| mischa   |
+| Miau     |
 
 ---
 
@@ -483,8 +559,8 @@ Es gibt eine dritte Tabelle in [Zwitscher](../zwitscher/)...
 
 ## Aufgaben
 
+- [PicoCTF](https://play.picoctf.org/) Anfängerfreundliches ÜbungsCTF.  SQLiLite, More SQLi, irish name repo 1/2 sind SQLi. SQL Direct ist allgemein zu SQL. logon ist allgemein zu Web.
 - [Natas](https://overthewire.org/wargames/natas/) Nicht nur SQLi, auch Websicherheit allgemein
-- [PicoCTF](https://play.picoctf.org/) Anfängerfreundliches ÜbungsCTF.  SQLiLite, logon, irish name repo 1/2 sind SQLi.
 
 ---
 
