@@ -3,6 +3,72 @@
 
 ---
 
+## Injections
+
+--
+
+## Injections - Beispiel 1
+
+```py
+name = input("Wie heißt du? ")
+
+print(f"Dein Name: '{name}'")
+print()
+
+message = f"Hallo {name}, hab einen schönen Tag!"
+print(message)
+```
+
+--
+
+## Injections
+
+- Output ist einfach nur ein String
+- Es kann nicht zwischen Eingabe und Vorgegebenem unterschieden werden
+- Was, wenn der String weiterverwendet wird?
+
+--
+
+## Injections - Beispiel 2
+
+```py
+name = input("Wie heißt du? ")
+
+print(f"Dein Name: \"{name}\"")
+print()
+print("Inhalt deiner persönlichen Notiz: ")
+
+filename= f"./Notizen/{name.lower()}.txt"
+with open(filename, "r") as f:
+    print(f.read())
+```
+```
+meine_notizen
+├── geheimnis.txt
+├── Notizen
+│   └── felix.txt
+│   └── charlene.txt
+└── read_file_injection.py
+```
+
+--
+
+## Injections - Path Traversal
+
+- Wie könnte dieses Verhalten ein Problem darstellen?
+
+```url
+http://www.meinecoolectfwebsite.de/notizen/felix
+                                           ─────
+```
+
+```url
+http://www.meinecoolectfwebsite.de/notizen/../geheimnis
+                                           ────────────
+```
+
+---
+
 ## SQL
 
 - **S**tructured **Q**uery **L**anguage
