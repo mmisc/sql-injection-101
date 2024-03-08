@@ -34,20 +34,26 @@ print(message)
 ```py
 name = input("Wie heißt du? ")
 
-print(f"Dein Name: \"{name}\"")
-print()
+print("Dein Name: '" + name + "'")
+
+filename = "./Notizen/" + name + ".txt"
+print("Lese Datei: " + filename)
+
 print("Inhalt deiner persönlichen Notiz: ")
 
-filename= f"./Notizen/{name.lower()}.txt"
+
 with open(filename, "r") as f:
-    print(f.read())
+    filecontent = f.read()
+    print(filecontent)
 ```
+<br>
+
 ```
 meine_notizen
 ├── geheimnis.txt
 ├── Notizen
 │   └── felix.txt
-│   └── charlene.txt
+│   └── mathilde.txt
 └── read_file_injection.py
 ```
 
