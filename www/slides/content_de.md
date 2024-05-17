@@ -36,7 +36,7 @@ name = input("Wie heißt du? ")
 
 print("Dein Name: '" + name + "'")
 
-filename = "./Notizen/" + name + ".txt"
+filename = "./notes/" + name + ".txt"
 print("Lese Datei: " + filename)
 
 print("Inhalt deiner persönlichen Notiz: ")
@@ -46,12 +46,10 @@ with open(filename, "r") as f:
     filecontent = f.read()
     print(filecontent)
 ```
-<br>
-
 ```
-meine_notizen
-├── geheimnis.txt
-├── Notizen
+my_notes_system
+├── secret.txt
+├── notes
 │   └── felix.txt
 │   └── mathilde.txt
 └── read_file_injection.py
@@ -64,13 +62,13 @@ meine_notizen
 - Wie könnte dieses Verhalten ein Problem darstellen?
 
 ```url
-http://www.meinecoolectfwebsite.de/notizen/felix
-                                           ─────
+http://www.meinecoolectfwebsite.de/notes/felix
+                                         ─────
 ```
 
 ```url
-http://www.meinecoolectfwebsite.de/notizen/../geheimnis
-                                           ────────────
+http://www.meinecoolectfwebsite.de/notes/../secret
+                                         ─────────
 ```
 
 ---
@@ -378,9 +376,10 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '" . $search . "';";
 Eingabe: <span style="color:crimson">#dog' UNION SELECT *  FROM user</span>
 
 ```php
-$sql = "SELECT *
-        FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT * FROM user';";
+$sql = "SELECT * FROM zwitscher
+        WHERE hashtag = '#dog'
+        UNION
+        SELECT * FROM user';";
 ```
 
 [Code ausführen](../zwitscher/?search=%23hashtag%27+UNION+SELECT+*+FROM+user)
@@ -406,9 +405,10 @@ Eingabe: <span style="color:crimson">#dog' UNION SELECT *  FROM user; -- </span>
 ( **Wichtig:** Leerzeichen nach Trennzeichen )
 
 ```php
-$sql = "SELECT *
-        FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT * FROM user; -- ';";
+$sql = "SELECT * FROM zwitscher
+        WHERE hashtag = '#dog'
+        UNION
+        SELECT * FROM user; -- ';";
 ```
 
 [Code ausführen](../zwitscher/?search=%27+UNION+SELECT+*+FROM+user%3B+--+)
@@ -450,9 +450,10 @@ $sql = "SELECT *
 Eingabe: <span style="color:crimson">#dog' UNION SELECT 1; -- </span>
 
 ```php
-$sql = "SELECT *
-        FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT 1; -- ';";
+$sql = "SELECT * FROM zwitscher
+        WHERE hashtag = '#dog'
+        UNION
+        SELECT 1; -- ';";
 ```
 
 [Code ausführen](../zwitscher/?search=%27+UNION+SELECT+1%3B+--+)
@@ -466,9 +467,10 @@ $sql = "SELECT *
 Eingabe: <span style="color:crimson">#dog' UNION SELECT 1, 2; -- </span>
 
 ```php
-$sql = "SELECT * 
-        FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT 1, 2; -- ';";
+$sql = "SELECT * FROM zwitscher
+        WHERE hashtag = '#dog'
+        UNION
+        SELECT 1, 2; -- ';";
 ```
 
 [Code ausführen](../zwitscher/?search=%27+UNION+SELECT+1%2C+2%3B+--+)
@@ -482,9 +484,10 @@ $sql = "SELECT *
 Eingabe: <span style="color:crimson">#dog' UNION SELECT 1, 2, 3; -- </span>
 
 ```php
-$sql = "SELECT *
-        FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT 1, 2, 3; -- ';";
+$sql = "SELECT * FROM zwitscher
+        WHERE hashtag = '#dog'
+        UNION
+        SELECT 1, 2, 3; -- ';";
 ```
 
 [Code ausführen](../zwitscher/?search=%27+UNION+SELECT+1%2C+2%2C+3%3B+--+)
@@ -504,9 +507,10 @@ $sql = "SELECT *
 Eingabe: <span style="color:crimson">#dog' UNION SELECT username, mail, age FROM user; -- </span>
 
 ```php
-$sql = "SELECT *
-        FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT username, mail, age FROM user; -- ';";
+$sql = "SELECT * FROM zwitscher
+        WHERE hashtag = '#dog'
+        UNION
+        SELECT username, mail, age FROM user; -- ';";
 ```
 
 [Code ausführen](../zwitscher/?search=%23dog%27+UNION+SELECT+username%2C+mail%2C+age+FROM+user%3B+--+)
@@ -520,7 +524,6 @@ Bingo!
 - Nicht nur die vorgesehene, sondern auch andere Tabellen können gelesen werden
 
 - Es gibt Probleme:
-
     - Tabellennamen sind nicht immer bekannt
     - Feldnamen sind nicht immer bekannt
 
@@ -549,7 +552,7 @@ Bingo!
 ## Wie mache ich meinen Code sicher?
 
 - Traue keinen Nutzereingaben
-- Benutze keine Abfragen, die aus festen Zeichenketten und Nutzereingaben zusammengesetzt werden
+- Benutze keine Abfragen, die durch simples Zusammensetzten von vorgegebenen Zeichenketten und Nutzereingaben entstehen
 - Benutze sichere Methoden für die Datenbank-Interaktion
 - In PHP z.b.: prepared statements
 
@@ -565,7 +568,7 @@ Es gibt eine dritte Tabelle in [Zwitscher](../zwitscher/)...
 
 ## Aufgaben
 
-- [PicoCTF](https://play.picoctf.org/) Anfängerfreundliches ÜbungsCTF.  SQLiLite, More SQLi, irish name repo 1/2 sind SQLi. SQL Direct ist allgemein zu SQL. logon ist allgemein zu Web.
+- [PicoCTF](https://play.picoctf.org/) Anfängerfreundliches Übungs-CTF. SQLiLite, More SQLi, irish name repo 1/2 sind SQLi. SQL Direct ist allgemein zu SQL. logon ist allgemein zu Web.
 - [Natas](https://overthewire.org/wargames/natas/) Nicht nur SQLi, auch Websicherheit allgemein
 
 ---
