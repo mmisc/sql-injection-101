@@ -58,7 +58,7 @@
     </nav>
     <div class="alert alert-warning">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Debug:</strong> "<?php echo $sql; ?>
+    <strong>Debug:</strong> <?php echo $sql; ?>
     </div>
     <?php
       if($q === FALSE) {

